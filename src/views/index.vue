@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <footTabBar :tabnow='tabnow' @switchBar="switchBar"></footTabBar>
+      <footTabBar :tabnow='tabnow' @switchBar="switchBar" @toVideo="toVideo"></footTabBar>
       <div class="switchAlias" @click="switchAlias">
         <div :style="alias=='あ'?'background: #fbc23d;':''">あ</div>
         <div :style="alias=='ア'?'background: #fbc23d;':''">ア</div>
@@ -30,14 +30,14 @@
                 <div>{{duyin}}</div>
               </div>
               <div class="detail-bottom">
-                <img :src="selText?'http://riyubao.net/sound/public/static/image/'+selText+'.png':''">
+                <img :src="tabnow=='seionn'&&selText?'http://riyubao.net/sound/public/static/image/'+selText+'.png':''">
               </div>
             </div>
         </div>
         <div class="explame">[ 书写示范 ] <img src="@/assets/image/go.png" @click="change"></div>
         <div class="gif">
-          <img v-show="read" :src="selText?'https://riyubao.net/image/'+selText+'.gif':''">
-          <img v-show="!read" :src="selText?'https://riyubao.net/image/'+selText+' - 副本.jpg':''">
+          <img v-show="read" :src="tabnow=='seionn'&&selText?'https://riyubao.net/image/'+selText+'.gif':''">
+          <img v-show="!read" :src="tabnow=='seionn'&&selText?'https://riyubao.net/image/'+selText+' - 副本.jpg':''">
         </div>
       </div>
     </transition>
@@ -72,6 +72,9 @@ export default {
     footTabBar
   },
   methods: {
+    toVideo: function() {
+      this.$router.push("/video");
+    },
     switchBar: function(val) {
       this.tabnow = val;
     },
@@ -185,7 +188,7 @@ export default {
   width: 80%;
   height: 55%;
   background: #fff;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

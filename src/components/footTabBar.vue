@@ -10,6 +10,9 @@
       <div @click = "toYOUONN" :style="tabnow=='youonn'?'border: 1px solid #fbc23d;color:#fbc23d;':''">
         拗音
       </div>
+      <div @click = "toVideo">
+        视频学习
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +33,9 @@ export default {
     },
     toYOUONN: function() {
       this.$emit("switchBar", "youonn");
+    },
+    toVideo: function() {
+      this.$emit("toVideo");
     }
   }
 };

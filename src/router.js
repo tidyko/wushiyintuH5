@@ -17,6 +17,11 @@ export default new Router({
       path: "/index",
       name: "index",
       component: () => import("./views/index.vue")
+    },
+    {
+      path: "/video",
+      name: "video",
+      component: () => import("./views/video.vue")
     }
   ]
 });
